@@ -13,6 +13,18 @@ if ( ! $is_by_short_code && ! defined( 'OTLMS_VERSION' ) ) {
 	tutor_utils()->tutor_custom_header();
 }
 
+?>
+<section class="main-banner mb-5" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/bg/banner.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12 text-center">
+				<h2><?php the_title(); ?></h2>
+			</div>
+		</div>				
+	</div>	
+</section>
+<?php 
+
 global $wp_query;
 
 $dashboard_page_slug = '';

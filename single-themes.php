@@ -9,7 +9,15 @@
     $theme_price = get_field('theme_price');
 ?>
 
-<main id="primary" class="site-main">
+<section class="main-banner" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/bg/banner.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12 text-center">
+				<h2><?php the_title(); ?></h2>
+			</div>
+		</div>				
+	</div>	
+</section>
     <section class="blog-grid">
         <div class="container single-theme-area">
             <div class="row">
@@ -130,6 +138,5 @@
             </div>
         </div>
     </section><!--/.blog-grid-->
-</main><!-- #main -->
 
 <?php get_footer(); ?>

@@ -75,12 +75,12 @@
 						while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
 							<li>
 								<a href="<?php the_permalink(); ?>">
-									<div class="float-start ppimage">
+									<div class="float-start popular-post-img">
 										<?php if ( has_post_thumbnail() ) {
 											the_post_thumbnail( 'thumbnail' );
 										} ?>
 									</div>
-									<div class="ppcontent">
+									<div class="popular-post">
 										<h4><?php the_title(); ?></h4>
 										<span><?php echo get_the_date(); ?></span>
 									</div>
@@ -93,7 +93,7 @@
 				<!-- Tags Widget -->
 				<div class="widget popular-posts-widget wow fadeIn">
 					<h3 class="widget-title">Tags</h3>
-					<div class="tags_clouds">
+					<div class="tags-clouds">
 						<?php
 						$tags = get_tags();
 						foreach ( $tags as $tag ) {

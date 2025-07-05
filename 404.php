@@ -201,7 +201,7 @@
 			
 			<!-- Start Drawer -->
 			<div id="mini_cart" class="min_cart_wrapper">
-				<div class="cart_drawer">
+				<div class="cart-drawer">
 					<div class="cart_top">
 						<a href="#" class="cart_close"><i class='bx bx-x'></i></a>
 						<h3 class="title">Courses List</h3>
@@ -210,10 +210,10 @@
 						</span>
 					</div>
 					
-					<div class="mini_cart_list">
+					<div class="mini-cart-list">
 						<ul>
 							<li class="d-flex">
-								<div class="thumb_img_cartmini">
+								<div class="thumb-img-cartmini">
 									<a href="course-details.html" class="mc_img">
 										<img src="assets/img/mcart/1.jpg" alt="Product Name" >
 									</a>
@@ -233,7 +233,7 @@
 									</div>
 								</div>
 								
-								<div class="produc_remove">
+								<div class="product-remove">
 									<a href="#" class="remove-product">
 										<i class='bx bx-trash'></i>
 									</a>              
@@ -241,7 +241,7 @@
 							</li>					
 							
 							<li class="d-flex">
-								<div class="thumb_img_cartmini">
+								<div class="thumb-img-cartmini">
 									<a href="course-details.html" class="mc_img">
 										<img src="assets/img/mcart/2.jpg" alt="Product Name" >
 									</a>
@@ -261,7 +261,7 @@
 									</div>
 								</div>
 								
-								<div class="produc_remove">
+								<div class="product-remove">
 									<a href="#" class="remove-product">
 										<i class='bx bx-trash'></i>
 									</a>              
@@ -269,7 +269,7 @@
 							</li>					
 							
 							<li class="d-flex">
-								<div class="thumb_img_cartmini">
+								<div class="thumb-img-cartmini">
 									<a href="course-details.html" class="mc_img">
 										<img src="assets/img/mcart/3.jpg" alt="Product Name" >
 									</a>
@@ -289,7 +289,7 @@
 									</div>
 								</div>
 								
-								<div class="produc_remove">
+								<div class="product-remove">
 									<a href="#" class="remove-product">
 										<i class='bx bx-trash'></i>
 									</a>              
@@ -298,7 +298,7 @@
 						</ul>
 					</div>
 					
-					<div class="cart_drawer_btnm">
+					<div class="cart-drawer-btn">
 						<div class="sub-total">
 							<span class="total-title float-start">Total:</span>
 							<span class="total-price float-end">$75.00</span>
@@ -357,8 +357,8 @@
 </section>
 <!-- End Main Banner -->
 
-<!-- Start page_not_found -->
-<section class="page_not_found">
+<!-- Start page-not-found -->
+<section class="page-not-found">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 text-center wow fadeIn">
@@ -371,7 +371,7 @@
 		</div>
 	</div>
 </section>
-<!-- End page_not_found -->
+<!-- End page-not-found -->
 
 		<!-- Start Footer -->
 		<section class="footer fstyle-2">

@@ -312,3 +312,13 @@ add_action( 'pre_get_posts', 'show_all_courses_on_archive' );
 
 
 require get_template_directory() . '/inc/custom-post.php';
+
+add_filter('tutor_before_register_student', function($data) {
+    if ( ! empty( $data['full_name'] ) ) {
+        $names = explode(' ', trim($data['full_name']), 2);
+        $data['first_name'] = $names[0];
+        $data['last_name'] = isset($names[1]) ? $names[1] : '';
+    }
+    return $data;
+});
+

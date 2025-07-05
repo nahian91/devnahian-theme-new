@@ -7,21 +7,19 @@ get_header();
 
 <main id="primary" class="site-main">
 
-<section class="breadcumb-area" style="background-image:url('<?php echo get_template_directory_uri();?>/assets/img/breadcumb.jpg')">
+<section class="main-banner" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/bg/banner.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12 text-center">
+				<h2><?php the_title(); ?></h2>
+			</div>
+		</div>				
+	</div>	
+</section>
+    <section class="blog-grid section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">                    
-                    <div class="post-single-content">
-                        <h4><?php the_title();?></h4>
-                    </div> 
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="blog-grid">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 mt-30">
+                <div class="col-lg-12 mt-30">
                     <div class="row">
                         <?php
                         $args = array(
@@ -36,7 +34,7 @@ get_header();
                             while ($query->have_posts()) :
                                 $query->the_post();
                                 ?>
-                                <div class="col-lg-6 col-md-6">
+                                <div class="col-lg-4 col-md-4">
                                     <div class="post-card">
                                         <div class="post-card-image">
                                             <?php
@@ -81,9 +79,6 @@ get_header();
                             ?>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 max-width">
-                    <?php get_sidebar(); ?>
                 </div>
             </div>
         </div>

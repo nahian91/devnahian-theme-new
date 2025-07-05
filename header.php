@@ -56,33 +56,39 @@
 </div>
 	
 
-					<div class="col-md-3 right-col align-self-center text-end">						
-						<?php if ( is_user_logged_in() ) : 
+					<?php if ( is_user_logged_in() ) : 
     $current_user = wp_get_current_user();
     $avatar_url = get_avatar_url( $current_user->ID );
-    $profile_url = get_edit_user_link(); 
+    $dashboard_url = site_url('/dashboard'); // Tutor LMS dashboard URL (adjust if different)
     $logout_url = wp_logout_url( home_url() );
 ?>
     <div class="tutor-user-info" style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
         <img src="<?php echo esc_url( $avatar_url ); ?>" alt="<?php echo esc_attr( $current_user->display_name ); ?>" style="width: 50px; height: 50px; border-radius: 50%;" />
         <div>
             <p style="margin: 0; font-weight: bold;"><?php echo esc_html( $current_user->display_name ); ?></p>
-            <a href="<?php echo esc_url( $profile_url ); ?>">Edit Profile</a> | 
+            <a href="<?php echo esc_url( $dashboard_url ); ?>">Dashboard</a> | 
             <a href="<?php echo esc_url( $logout_url ); ?>">Logout</a>
         </div>
     </div>
-
 <?php else : 
-    $login_url = wp_login_url(); // Or use custom login page URL
-    $register_url = wp_registration_url(); // Or use custom register page
+    $login_url = site_url('/login');    // Tutor LMS login page URL
+    $register_url = site_url('/register'); // Tutor LMS register page URL
 ?>
     <div class="tutor-login-buttons" style="margin-bottom: 20px;">
         <a href="<?php echo esc_url( $login_url ); ?>" class="btn btn-primary" style="margin-right: 10px;">Login</a>
         <a href="<?php echo esc_url( $register_url ); ?>" class="btn btn-outline-primary">Register</a>
+		<?php
+$register_url = add_query_arg(
+    'redirect_to',
+    urlencode( site_url('/dashboard/') ),
+    site_url('/student-registration/')
+);
+
+echo '<a href="' . esc_url($register_url) . '">Register Now</a>';
+?>
     </div>
 <?php endif; ?>
 
-					</div><!-- End Col -->
 					
 					<ul class='mobile_menu'>
 						<li class="menu-item-has-children">
@@ -131,7 +137,7 @@
 			
 			<!-- Start Drawer -->
 			<div id="mini_cart" class="min_cart_wrapper">
-				<div class="cart_drawer">
+				<div class="cart-drawer">
 					<div class="cart_top">
 						<a href="#" class="cart_close"><i class='bx bx-x'></i></a>
 						<h3 class="title">Courses List</h3>
@@ -140,10 +146,10 @@
 						</span>
 					</div>
 					
-					<div class="mini_cart_list">
+					<div class="mini-cart-list">
 						<ul>
 							<li class="d-flex">
-								<div class="thumb_img_cartmini">
+								<div class="thumb-img-cartmini">
 									<a href="course-details.html" class="mc_img">
 										<img src="<?php echo get_template_directory_uri();?>/assets/img/mcart/1.jpg" alt="Product Name" >
 									</a>
@@ -163,7 +169,7 @@
 									</div>
 								</div>
 								
-								<div class="produc_remove">
+								<div class="product-remove">
 									<a href="#" class="remove-product">
 										<i class='bx bx-trash'></i>
 									</a>              
@@ -171,7 +177,7 @@
 							</li>					
 							
 							<li class="d-flex">
-								<div class="thumb_img_cartmini">
+								<div class="thumb-img-cartmini">
 									<a href="course-details.html" class="mc_img">
 										<img src="<?php echo get_template_directory_uri();?>/assets/img/mcart/2.jpg" alt="Product Name" >
 									</a>
@@ -191,7 +197,7 @@
 									</div>
 								</div>
 								
-								<div class="produc_remove">
+								<div class="product-remove">
 									<a href="#" class="remove-product">
 										<i class='bx bx-trash'></i>
 									</a>              
@@ -199,7 +205,7 @@
 							</li>					
 							
 							<li class="d-flex">
-								<div class="thumb_img_cartmini">
+								<div class="thumb-img-cartmini">
 									<a href="course-details.html" class="mc_img">
 										<img src="<?php echo get_template_directory_uri();?>/assets/img/mcart/3.jpg" alt="Product Name" >
 									</a>
@@ -219,7 +225,7 @@
 									</div>
 								</div>
 								
-								<div class="produc_remove">
+								<div class="product-remove">
 									<a href="#" class="remove-product">
 										<i class='bx bx-trash'></i>
 									</a>              
@@ -228,7 +234,7 @@
 						</ul>
 					</div>
 					
-					<div class="cart_drawer_btnm">
+					<div class="cart-drawer-btn">
 						<div class="sub-total">
 							<span class="total-title float-start">Total:</span>
 							<span class="total-price float-end">$75.00</span>

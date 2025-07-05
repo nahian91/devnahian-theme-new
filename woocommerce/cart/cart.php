@@ -81,7 +81,7 @@ do_action( 'woocommerce_before_cart' );
 				<div class="cart-collaterals">
 					<h2>Cart totals</h2>
 					
-					<div class="shop_table shop_table_responsive">
+					<div class="shop_table shop-table-responsive">
 						<div class="cart-subtnotal">
 							<div class="title">Subtnotal</div>
 							<div><?php wc_cart_totals_subtnotal_html(); ?></div>
