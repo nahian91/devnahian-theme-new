@@ -26,19 +26,6 @@ $login_url = tutor_utils()->get_option( 'enable_tutor_native_login', null, true,
 //phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 do_action( 'tutor/template/login/before/wrap' );
 ?>
-
-<section class="breadcumb-area" style="background-image:url('<?php echo get_template_directory_uri();?>/assets/img/breadcumb.jpg')">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">                    
-				<div class="post-single-content">
-					<h4>Login</h4>
-				</div> 
-			</div>
-		</div>
-	</div>
-</section>
-
 <div <?php tutor_post_class( 'tutor-page-wrap' ); ?>>
 	<div class="tutor-template-segment tutor-login-wrap">
 

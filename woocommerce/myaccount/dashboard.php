@@ -27,6 +27,7 @@ $allowed_html = array(
 	),
 );
 ?>
+
 <p>
 	<?php
 	printf(

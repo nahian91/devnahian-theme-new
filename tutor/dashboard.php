@@ -66,19 +66,7 @@ $footer_links = array(
 
 do_action( 'tutor_dashboard/before/wrap' );
 ?>
-
-<section class="breadcumb-area" style="background-image:url('<?php echo get_template_directory_uri();?>/assets/img/breadcumb.jpg')">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">                    
-				<div class="post-single-content">
-					<h4><?php echo esc_html( $user->display_name ); ?></h4>
-				</div> 
-			</div>
-		</div>
-	</div>
-</section>
-<div class="tutor-wrap tutor-wrap-parent tutor-dashboard tutor-frontend-dashboard tutor-dashboard-student tutor-pb-80 pt-80 pb-80">
+<div class="tutor-wrap tutor-wrap-parent tutor-dashboard tutor-frontend-dashboard tutor-dashboard-student tutor-pb-80">
 	<div class="tutor-container">
 		<div class="tutor-row tutor-d-flex tutor-justify-between tutor-frontend-dashboard-header">
 			<div class="tutor-header-left-side tutor-dashboard-header tutor-col-md-6 tutor-d-flex tutor-align-center" style="border: none;">
@@ -153,7 +141,7 @@ do_action( 'tutor_dashboard/before/wrap' );
 							<?php else : ?>
 							<a href="#" class="tutor-btn tutor-btn-outline-primary tutor-create-new-course">
 								<i class="tutor-icon-plus-square tutor-my-n4 tutor-mr-8"></i>
-								<?php esc_html_e( 'Create a New Course', 'tutor' ); ?>
+								<?php esc_html_e( 'New Course', 'tutor' ); ?>
 							</a>
 					<?php endif; ?>
 						<?php
@@ -299,4 +287,3 @@ do_action( 'tutor_dashboard/before/wrap' );
 if ( ! $is_by_short_code && ! defined( 'OTLMS_VERSION' ) ) {
 	tutor_utils()->tutor_custom_footer();
 }
-?>

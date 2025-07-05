@@ -1,137 +1,108 @@
 <?php
-   /**
-    * Cart Page
-    *
-    * @see     https://docs.woocommerce.com/document/template-structure/
-    * @package WooCommerce\Templates
-    * @version 7.9.0
-    */
-   
-   defined( 'ABSPATH' ) || exit;
-   
-    ?>
-<section class="breadcumb-area" style="background-image:url('<?php echo get_template_directory_uri();?>/assets/img/breadcumb.jpg')">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-12">
-            <div class="post-single-content">
-               <h4><?php the_title();?></h4>
-            </div>
-         </div>
-      </div>
-   </div>
+/**
+ * Template for WooCommerce Cart Page (Customized)
+ *
+ * Copy this file to yourtheme/woocommerce/cart/cart.php
+ * to override WooCommerce's default cart layout.
+ *
+ * @package WooCommerce\Templates
+ * @version 7.9.0
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+do_action( 'woocommerce_before_cart' );
+?>
+
+<!-- Start Main Banner -->
+<section class="main-banner" style="background-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/bg/banner.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12 text-center">
+				<h2>Cart</h2>
+			</div>
+		</div>				
+	</div>		
 </section>
-<section class="car-area pt-80 pb-80">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-8">
-			<?php do_action( 'woocommerce_before_cart' ); ?>
-            <form class="woocommerce-cart-form form-container" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-               <?php do_action( 'woocommerce_before_cart_table' ); ?>
-               <?php
-                  foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-                  	$_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-                  	$product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
-                  
-                  	if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
-                  		$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
-                  		?>
-               <!-- .cart-contents-wrapper -->
-               <div class="cart-contents-wrapper mb-3">
-                  <!-- .cart-contents -->
-                  <?php do_action( 'woocommerce_before_cart_contents' ); ?>
-                  <div class="cart-contents">
-                     <!-- .cart-product-image -->
-                     <div class="cart-product-image">
-                        <?php
-                           $thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image( 'cart-image-thumb' ), $cart_item, $cart_item_key );
-                           
-                           if ( ! $product_permalink ) {
-                           echo $thumbnail; // PHPCS: XSS ok.
-                           } else {
-                           printf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $thumbnail ); // PHPCS: XSS ok.
-                           }
-                           ?>
-                     </div>
-                     <!-- .cart-product-title -->
-                     <div class="cart-product-title">
-                        <?php
-                           if ( ! $product_permalink ) {
-                           	echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
-                           } else {
-                           	echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) );
-                           }
-                           
-                           do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
-                           
-                           // Meta data.
-                           echo wc_get_formatted_cart_item_data( $cart_item ); // PHPCS: XSS ok.
-                           
-                           // Backorder notification.
-                           if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
-                           	echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'tutorstarter' ) . '</p>', $product_id ) );
-                           }
-                           ?>
-                     </div>
-                     <!-- .cart-product-actions -->
-                     <div class="cart-product-actions">
-                        <!-- .cart-product-price -->
-                        <div class="cart-product-price">
-                           <?php
-                              echo apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
-                              ?>
-                        </div>
-                     </div>
-                        <!-- .cart-product-remove -->
-                        <div class="cart-product-remove">
-                           <?php
-                              echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                              	'woocommerce_cart_item_remove_link',
-                              	sprintf(
-                              		'<a href="%s" aria-label="%s" data-product_id="%s" data-product_sku="%s">%s</a>',
-                              		esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-                              		esc_html__( 'Remove this item', 'tutorstarter' ),
-                              		esc_attr( $product_id ),
-                              		esc_attr( $_product->get_sku() ),
-                              		esc_html__( 'X', 'tutorstarter' )
-                              	),
-                              	$cart_item_key
-                              );
-                              ?>
-                        </div>
-                  </div>
-                  <!-- .cart-contents -->
-                  <?php do_action( 'woocommerce_cart_contents' ); ?>
-                  <?php do_action( 'woocommerce_after_cart_contents' ); ?>
-               </div>
-               <!-- .cart-contents-wrapper -->
-               <?php
-                  }
-                  }
-                  ?>
-               <?php do_action( 'woocommerce_after_cart_table' ); ?>
-            </form>
-            <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
-         </div>
-         <div class="col-md-4">
-            <!-- .cart-collaterals -->
-            <div class="cart-collaterals">
-               <!-- .cart-summary -->
-               <div class="cart-summary">
-                  <?php
-                     /**
-                      * Cart collaterals hook.
-                      *
-                      * @hooked woocommerce_cross_sell_display
-                      * @hooked woocommerce_cart_totals - 10
-                      */
-                     do_action( 'woocommerce_cart_collaterals' );
-                     ?>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   </div>
-</section>
+<!-- End Main Banner -->
+
+<!-- Start Shopping Cart -->
+<div class="shopping-cart section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-9 wow fadeIn">
+				<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+					<table class="table shopping-summery responsive-table woocommerce-cart-form__contents">
+						<thead>
+							<tr class="main-hading">
+								<th>Products</th>
+								<th>Price</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) :
+								$_product   = $cart_item['data'];
+								$product_id = $cart_item['product_id'];
+
+								if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 ) :
+									$product_permalink = $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '';
+							?>
+							<tr>
+								<td>
+									<a href="<?php echo esc_url( $product_permalink ); ?>" class="pthumb">
+										<?php echo $_product->get_image( 'full' ); ?>
+									</a>
+									<div class="product-name">		
+										<a href="<?php echo esc_url( $product_permalink ); ?>">
+											<?php echo $_product->get_name(); ?>
+										</a>
+										<?php echo wc_get_formatted_cart_item_data( $cart_item ); ?>
+									</div>
+								</td>
+
+								<td class="price"><?php echo WC()->cart->get_product_price( $_product ); ?></td>
+
+								<td class="action">
+									<a href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key ) ); ?>" aria-label="<?php esc_attr_e( 'Remove this item', 'woocommerce' ); ?>" onclick="return confirm('<?php esc_attr_e( 'Are you sure you want to remove this item?', 'woocommerce' ); ?>');">
+										<i class="fas fa-trash"></i>
+									</a>
+								</td>
+
+							</tr>
+							<?php endif; endforeach; ?>
+						</tbody>
+					</table>
+				</form>
+			</div>
+
+			<!-- Cart Totals Sidebar -->
+			<div class="col-xl-3 wow fadeIn">
+				<div class="cart-collaterals">
+					<h2>Cart totals</h2>
+					
+					<div class="shop_table shop_table_responsive">
+						<div class="cart-subtnotal">
+							<div class="title">Subtnotal</div>
+							<div><?php wc_cart_totals_subtnotal_html(); ?></div>
+						</div>
+
+						<div class="order-total">
+							<div class="title">Total</div>
+							<div><?php wc_cart_totals_order_total_html(); ?></div>
+						</div>
+
+						<div class="wc-proceed-to-checkout">		
+							<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
+						</div>									
+					</div>
+				</div>
+			</div>
+			<!-- End Cart Totals Sidebar -->
+
+		</div>
+	</div>
+</div>
+<!-- End Shopping Cart -->
+
 <?php do_action( 'woocommerce_after_cart' ); ?>
